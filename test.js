@@ -34,20 +34,13 @@ function createAThing() {
 }
 
 describe('Constuctor-ish function that uses new', function () {
-  var it;
-  var firstArg;
-  var _this;
-
   describe('using new', function () {
-    beforeEach(function () {
-      _this = this;
-      firstArg = {};
-
-      it = new getNewThing(firstArg, 'test', true, 53);
-    });
-
-    describe('context', function(){
+    describe('context', function (){
       it('should maintain the correct context with regard to the returned object', function() {
+        let _this = this;
+        let firstArg = {};
+        let it = new getNewThing(firstArg, 'test', true, 53);
+
         let ctx = it.getContext();
         expect(ctx).to.equal(it);
 
@@ -62,6 +55,10 @@ describe('Constuctor-ish function that uses new', function () {
        * This inconsistency is hard to work around.
        */
       it('should pass a direct reference for arguments through', function () {
+        let _this = this;
+        let firstArg = {};
+        let it = new getNewThing(firstArg, 'test', true, 53);
+
         // This scenario causes args to be in an extra array, so it._args[0]
         // is really what you'd need -- and impossible to know that in advance
         let itArgs = it._args;
@@ -77,6 +74,10 @@ describe('Constuctor-ish function that uses new', function () {
 
     describe('constructor property', function (){
       it('should set the constructor correctly', function () {
+        let _this = this;
+        let firstArg = {};
+        let it = new getNewThing(firstArg, 'test', true, 53);
+
         expect(it instanceof Thing).to.be(true);
         expect(it.constructor).to.be(Thing);
       });
@@ -87,7 +88,6 @@ describe('Constuctor-ish function that uses new', function () {
     describe('context', function(){
       it('should maintain the correct context with regard to the returned object', function() {
         let _this = this;
-
         let it = getNewThing();
 
         let ctx = it.getContext();

@@ -1,13 +1,13 @@
 {
   "name": "new-keyword-assert",
   "version": "0.0.0",
-  "description": "",
+  "description": "Examples of harm the new keyword can cause",
   "main": "test.js",
   "scripts": {
     "test": "mocha --harmony test.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Mike Nason",
+  "license": "MIT",
   "dependencies": {
     "mocha": "^2.2.5"
   },
