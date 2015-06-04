@@ -1,7 +1,7 @@
 {
   "name": "new-keyword-assert",
   "version": "0.0.0",
-  "description": "Examples of harm the new keyword can cause",
+  "description": "Tests demonstrating pitfalls of the JavaScript `new` keyword in one use case",
   "main": "test.js",
   "scripts": {
     "test": "mocha --harmony test.js"
