@@ -1,31 +1,42 @@
 "use strict";
 
 /**
- * Tests for unintended consequences various pseudoclassical instantiation
- * techniques, contained by functions and called with and without the
- * `new` keyword.
+ * Let's pretend you have some vendor code exposing a pseudoclassical class.
+ * The point of these tests are to explore different approaches to interacting
+ * with it, specifically functions that instantiate an object for you and how
+ * the `new` keyword comes into play
+ *
+ * The specific case is writing a function that returns an instance of some class,
+ * and no guarantee that it will consistently be called with the `new` keyword.
+ *
+ * Note: some of these tests fail, and thats the whole point
  */
 
 const expect = require('expect.js');
 const _ = require('lodash');
 
+// A very useful class
 function Thing() {
   this.test = true;
   this._args = arguments;
   this.getContext = function () { return this };
 }
 
+// Now lets write a function to construct us a Thing.
+// There's more than a few ways:
+
+// Commonly, you'll just `new` it
 function getNewThing() {
   return new Thing(arguments);
 }
-
+// Sometimes you'll use `apply`
 function applyNewThing() {
   var it = {};
   Thing.apply(it, arguments);
 
   return it;
 }
-
+// Or `Object.create`
 function createAThing() {
   var newThing = Object.create(Thing.prototype);
   Thing.apply(newThing, arguments);
